@@ -92,7 +92,7 @@ const request = {
     )
   },
   post: (url, data, callback, catchFun) => {
-    this.api('post', url, data)
+    request.api('post', url, data)
       .then(response => {
         callback && callback(response)
       })
@@ -101,7 +101,7 @@ const request = {
     })
   },
   get: (url, data, callback, catchFun) => {
-    this.api('get', url, data)
+    request.api('get', url, data)
       .then(response => {
         callback && callback(response)
       }).catch(() => {
@@ -109,7 +109,7 @@ const request = {
     })
   },
   downloadPOST: (fileName, url, data, callback, catchFun) => {
-    this.api('post', url, data, 'blob')
+    request.api('post', url, data, 'blob')
       .then(res => {
         callback && callback()
         // 兼容ie11

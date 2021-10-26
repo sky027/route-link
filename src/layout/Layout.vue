@@ -70,6 +70,7 @@
     margin-left: 15px;
     border-left: 1px solid #bebaba;
     position: relative;
+    overflow: hidden;
     .header{
       height: 30px;
       line-height: 30px;

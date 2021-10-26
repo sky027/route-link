@@ -1,5 +1,9 @@
 <template>
-  <router-view></router-view>
+  <div class="main-page" ref="mainPage">
+    <el-scrollbar style="height: 100%">
+      <router-view />
+    </el-scrollbar>
+  </div>
 </template>
 
 <script>
@@ -8,6 +12,8 @@
   }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.main-page{
+  height: calc(100vh - 130px);
+}
 </style>

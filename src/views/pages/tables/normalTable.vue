@@ -3,17 +3,13 @@
     <search-table
       ref="searchTable"
       :form="searchData"
+      :isFeed="false"
       :table-config="tableConfig">
       <!--查询-->
       <template slot="searchForm">
         <el-form v-model="searchData" :inline='true'>
           <el-form-item label="配置名称：">
             <el-input v-model.trim="searchData.configName" clearable placeholder="请输入配置名称" />
-          </el-form-item>
-          <el-form-item label='选择省份：'>
-            <el-select v-model="searchData.provinceCode" clearable placeholder="请选择省份">
-              <el-option v-for="(item, index) in cities" :key="index" :label="item.label" :value="item.value" />
-            </el-select>
           </el-form-item>
           <el-form-item label="参数标识：">
             <el-select v-model="searchData.configKey" clearable placeholder="请选择参数标识">
@@ -50,7 +46,7 @@
           configKey: ''
         },
         tableConfig: {
-          requestUrl: '/mock/list',
+          requestUrl: '/normal/list',
           isIndex: true,
           topOperate: true,
           isPagination: true,
@@ -83,6 +79,8 @@
         }).then(() => {
           this.$message.success('删除成功')
           this.$refs.searchTable.handleSearch()
+        }).catch(r => {
+          this.$message.error('删除失败')
         })
       },
       editConfig() {

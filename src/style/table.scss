@@ -73,6 +73,10 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         position: relative;
+        .el-input__inner{
+          height: 30px;
+          line-height: 30px;
+        }
         .el-button{
           position: relative;
           top: 1px;

@@ -83,7 +83,7 @@
         @current-change="handleCurrentChange">
       </el-pagination>
     </div>
-    <div v-if="tableConfig.isTreeTable" class="tab-box">
+    <div v-if="tableConfig.isTreeTable" class="tab-box tree-tab">
       <!--树形列表-->
       <el-table
         :data="tableData"
@@ -209,7 +209,7 @@ export default {
       if (this.tableConfig.isPagination) {
         param = Object.assign(param, this.pagination)
       }
-      if (this.tableConfig.requestUrl === '/mock/list') {
+      if (this.tableConfig.requestUrl === '/normal/list') {
         this.tableData = this.tableDataAll.slice((this.pagination.pageNumber - 1) * this.pagination.pageSize, this.pagination.pageNumber * this.pagination.pageSize)
         this.total = this.tableDataAll.length
         setTimeout(() => {
@@ -217,6 +217,15 @@ export default {
           this.listLoading = false
         }, 700)
         return
+      }
+      if (this.tableConfig.requestUrl === '/tree/list') {
+        const list = this.getTreeData()
+        this.checkTreeList(list)
+        this.tableData = list
+        setTimeout(() => {
+          that.setTitle()
+        }, 700)
+        this.listLoading = false
       }
       this.$request.post(this.tableConfig.requestUrl, param, (result) => {
         if (result && result.returnCode === '1000') {
@@ -299,6 +308,294 @@ export default {
       } else {
         this.$refs.searchTable.clearSelection();
       }
+    },
+    getTreeData() {
+      return [
+        {
+        "children": [{
+          "code": "000000-000000",
+          "id": "1452583049281835009",
+          "name": "首页",
+          "parentCode": "000000",
+          "parentId": "88888888",
+          "pid": "88888888",
+          "remark": null,
+          "routeKey": "mainPage",
+          "sortNo": "2",
+          "url": "/mainPage",
+          "visible": "2",
+          "weight": "2"
+        }, {
+          "children": [{
+            "code": "000000-000001-000000",
+            "id": "1452583175937232898",
+            "name": "基础参数配置",
+            "parentCode": "000000-000001",
+            "parentId": "1452583049281835010",
+            "pid": "1452583049281835010",
+            "remark": null,
+            "routeKey": "ParamConfig",
+            "sortNo": "4",
+            "url": "/businessConfig/paramConfig",
+            "visible": "2",
+            "weight": "4"
+          }, {
+            "code": "000000-000001-000001",
+            "id": "1452583257671634945",
+            "name": "APP菜单管理",
+            "parentCode": "000000-000001",
+            "parentId": "1452583049281835010",
+            "pid": "1452583049281835010",
+            "remark": null,
+            "routeKey": "AppMenu",
+            "sortNo": "5",
+            "url": "/businessConfig/appMenu",
+            "visible": "2",
+            "weight": "5"
+          }
+          ],
+          "code": "000000-000001",
+          "id": "1452583049281835010",
+          "name": "业务配置",
+          "parentCode": "000000",
+          "parentId": "88888888",
+          "pid": "88888888",
+          "remark": null,
+          "routeKey": "BusinessConfig",
+          "sortNo": "3",
+          "url": "/businessConfig",
+          "visible": "2",
+          "weight": "3"
+        }, {
+          "children": [{
+            "code": "000000-000002-000000",
+            "id": "1452583618591494145",
+            "name": "装维工单明细",
+            "parentCode": "000000-000002",
+            "parentId": "1452583514459508737",
+            "pid": "1452583514459508737",
+            "remark": null,
+            "routeKey": "InstallOrderDetail",
+            "sortNo": "7",
+            "url": "/statisticalAnalysis/installOrderDetail",
+            "visible": "2",
+            "weight": "7"
+          }, {
+            "code": "000000-000002-000001",
+            "id": "1452583683913584641",
+            "name": "随销工单明细",
+            "parentCode": "000000-000002",
+            "parentId": "1452583514459508737",
+            "pid": "1452583514459508737",
+            "remark": null,
+            "routeKey": "WorkOrderDetail",
+            "sortNo": "8",
+            "url": "/statisticalAnalysis/workOrderDetail",
+            "visible": "2",
+            "weight": "8"
+          }, {
+            "code": "000000-000002-000002",
+            "id": "1452583740322779138",
+            "name": "装维画像",
+            "parentCode": "000000-000002",
+            "parentId": "1452583514459508737",
+            "pid": "1452583514459508737",
+            "remark": null,
+            "routeKey": "Portrayal",
+            "sortNo": "9",
+            "url": "/statisticalAnalysis/portrayal",
+            "visible": "2",
+            "weight": "9"
+          }
+          ],
+          "code": "000000-000002",
+          "id": "1452583514459508737",
+          "name": "统计分析",
+          "parentCode": "000000",
+          "parentId": "88888888",
+          "pid": "88888888",
+          "remark": null,
+          "routeKey": "StatisticalAnalysis",
+          "sortNo": "6",
+          "url": "/statisticalAnalysis",
+          "visible": "2",
+          "weight": "6"
+        }, {
+          "children": [{
+            "code": "000000-000003-000000",
+            "id": "1452804155477495809",
+            "name": "用户管理",
+            "parentCode": "000000-000003",
+            "parentId": "1452583835894190081",
+            "pid": "1452583835894190081",
+            "remark": null,
+            "routeKey": "UserManager",
+            "sortNo": "11",
+            "url": "/systemManagement/userManager",
+            "visible": "2",
+            "weight": "11"
+          }, {
+            "code": "000000-000003-000001",
+            "id": "1452804262369333249",
+            "name": "角色权限管理",
+            "parentCode": "000000-000003",
+            "parentId": "1452583835894190081",
+            "pid": "1452583835894190081",
+            "remark": null,
+            "routeKey": "RoleManager",
+            "sortNo": "12",
+            "url": "/systemManagement/roleManager",
+            "visible": "2",
+            "weight": "12"
+          }, {
+            "code": "000000-000003-000002",
+            "id": "1452804467332386817",
+            "name": "菜单管理",
+            "parentCode": "000000-000003",
+            "parentId": "1452583835894190081",
+            "pid": "1452583835894190081",
+            "remark": null,
+            "routeKey": "MenuManager",
+            "sortNo": "13",
+            "url": "/systemManagement/menuManager",
+            "visible": "2",
+            "weight": "13"
+          }, {
+            "code": "000000-000003-000003",
+            "id": "1452804514786742273",
+            "name": "组织架构管理",
+            "parentCode": "000000-000003",
+            "parentId": "1452583835894190081",
+            "pid": "1452583835894190081",
+            "remark": null,
+            "routeKey": "OrganizationManager",
+            "sortNo": "14",
+            "url": "/systemManagement/organizationManager",
+            "visible": "2",
+            "weight": "14"
+          }, {
+            "code": "000000-000003-000004",
+            "id": "1452804553634385922",
+            "name": "数据字典",
+            "parentCode": "000000-000003",
+            "parentId": "1452583835894190081",
+            "pid": "1452583835894190081",
+            "remark": null,
+            "routeKey": "Dictionary",
+            "sortNo": "15",
+            "url": "/systemManagement/dictionary",
+            "visible": "2",
+            "weight": "15"
+          }, {
+            "code": "000000-000003-000005",
+            "id": "1452804598089814018",
+            "name": "系统日志管理",
+            "parentCode": "000000-000003",
+            "parentId": "1452583835894190081",
+            "pid": "1452583835894190081",
+            "remark": null,
+            "routeKey": "AppLoginLog",
+            "sortNo": "16",
+            "url": "/systemManagement/appLoginLog",
+            "visible": "2",
+            "weight": "16"
+          }, {
+            "code": "000000-000003-000006",
+            "id": "1452804874255372289",
+            "name": "版本管理",
+            "parentCode": "000000-000003",
+            "parentId": "1452583835894190081",
+            "pid": "1452583835894190081",
+            "remark": null,
+            "routeKey": "VersionManager",
+            "sortNo": "17",
+            "url": "/systemManagement/versionManager",
+            "visible": "2",
+            "weight": "17"
+          }, {
+            "children": [{
+              "code": "000000-000003-000007-000000",
+              "id": "1452805012575129601",
+              "name": "文档下载",
+              "parentCode": "000000-000003-000007",
+              "parentId": "1452804918236844034",
+              "pid": "1452804918236844034",
+              "remark": null,
+              "routeKey": "FileDownload",
+              "sortNo": "19",
+              "url": "/systemManagement/helpCenter/fileDownload",
+              "visible": "2",
+              "weight": "19"
+            }, {
+              "code": "000000-000003-000007-000001",
+              "id": "1452805070859177986",
+              "name": "常见问题分类",
+              "parentCode": "000000-000003-000007",
+              "parentId": "1452804918236844034",
+              "pid": "1452804918236844034",
+              "remark": null,
+              "routeKey": "QuestionType",
+              "sortNo": "20",
+              "url": "/systemManagement/helpCenter/questionType",
+              "visible": "2",
+              "weight": "20"
+            }, {
+              "code": "000000-000003-000007-000002",
+              "id": "1452805117394980865",
+              "name": "问题列表",
+              "parentCode": "000000-000003-000007",
+              "parentId": "1452804918236844034",
+              "pid": "1452804918236844034",
+              "remark": null,
+              "routeKey": "ProblemList",
+              "sortNo": "21",
+              "url": "/systemManagement/helpCenter/problemList",
+              "visible": "2",
+              "weight": "21"
+            }
+            ],
+            "code": "000000-000003-000007",
+            "id": "1452804918236844034",
+            "name": "帮助中心",
+            "parentCode": "000000-000003",
+            "parentId": "1452583835894190081",
+            "pid": "1452583835894190081",
+            "remark": null,
+            "routeKey": "HelpCenter",
+            "sortNo": "18",
+            "url": "/systemManagement/helpCenter",
+            "visible": "2",
+            "weight": "18"
+          }
+          ],
+          "code": "000000-000003",
+          "id": "1452583835894190081",
+          "name": "系统管理",
+          "parentCode": "000000",
+          "parentId": "88888888",
+          "pid": "88888888",
+          "remark": null,
+          "routeKey": "SystemManagement",
+          "sortNo": "10",
+          "url": "/systemManagement",
+          "visible": "2",
+          "weight": "10"
+        }
+        ],
+        "code": "000000",
+        "id": "88888888",
+        "name": "中移和装维后台管理",
+        "parentCode": "",
+        "parentId": "0",
+        "pid": "0",
+        "remark": null,
+        "routeKey": null,
+        "sortNo": "1",
+        "url": "",
+        "visible": "1",
+        "weight": "1"
+      }
+      ]
     }
   }
 }
@@ -337,6 +634,11 @@ export default {
     .table {
       border: 1px solid #e6ebf5;
       border-bottom: none;
+    }
+  }
+  .tree-tab{
+    /deep/ .el-table--border th {
+      border-right: 1px solid #dad5d5;
     }
   }
 }

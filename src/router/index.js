@@ -15,7 +15,7 @@ const systemRoute = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/system/login'),
+    component: () => import(/* webpackChunkName: "Login" */ '@/views/system/login'),
   },
   {
     path: '/error/404',
@@ -39,7 +39,7 @@ export const routeList = [
       {
         path: 'index',
         name: 'Index',
-        component: () => import('@/views/home/index'),
+        component: () => import(/* webpackChunkName: "Index" */ '@/views/home/index'),
         meta:{
           title:'首页',
           icon: 'el-icon-s-home',
@@ -63,24 +63,74 @@ export const routeList = [
           {
             path:'normalTable',
             name:'NormalTable',
-            component:()=>import('@/views/pages/tables/normalTable'),
+            component:() => import(/* webpackChunkName: "NormalTable" */ '@/views/pages/tables/normalTable'),
             meta:{
               title:'普通列表',
               breadcrumb: [
-                { path: '/computer', name: '表格组件', icon: 'el-icon-s-grid' },
-                { path: '/computer/computerList', name: '普通列表'}
+                { path: '/tablePage', name: '表格组件', icon: 'el-icon-s-grid' },
+                { path: '/tablePage/normalTable', name: '普通列表'}
               ]
             }
           },
           {
             path:'treeTable',
             name:'TreeTable',
-            component:()=>import('@/views/pages/tables/treeTable'),
+            component:() => import(/* webpackChunkName: "TreeTable" */ '@/views/pages/tables/treeTable'),
             meta:{
               title:'树型列表',
               breadcrumb: [
-                { path: '/computer', name: '表格组件', icon: 'el-icon-cpu' },
-                { path: '/computer/treeTable', name: '树型列表'}
+                { path: '/tablePage', name: '表格组件', icon: 'el-icon-s-grid' },
+                { path: '/tablePage/treeTable', name: '树型列表'}
+              ]
+            }
+          },
+          {
+            path:'totalList',
+            name:'TotalList',
+            component:() => import(/* webpackChunkName: "TotalList" */ '@/views/pages/tables/totalList'),
+            meta:{
+              title:'合计列表',
+              breadcrumb: [
+                { path: '/tablePage', name: '表格组件', icon: 'el-icon-s-grid' },
+                { path: '/tablePage/totalList', name: '合计列表'}
+              ]
+            }
+          },
+          {
+            path:'mergeTable',
+            name:'MergeTable',
+            component:() => import(/* webpackChunkName: "MergeTable" */ '@/views/pages/tables/mergeTable'),
+            meta:{
+              title:'合并表格',
+              breadcrumb: [
+                { path: '/tablePage', name: '表格组件', icon: 'el-icon-s-grid' },
+                { path: '/tablePage/mergeTable', name: '合并表格' }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        path:'otherTemp',
+        name:'OtherTemp',
+        component: { render (c) { return c('router-view') }},
+        meta:{
+          title:'其他类型组件',
+          icon: 'el-icon-document',
+          breadcrumb: [
+            { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' }
+          ]
+        },
+        children: [
+          {
+            path:'selectTemp',
+            name:'SelectTemp',
+            component:() => import(/* webpackChunkName: "SelectTemp" */ '@/views/pages/otherTemp/selectTemp'),
+            meta:{
+              title:'级联下拉、下拉框',
+              breadcrumb: [
+                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
+                { path: '/otherTemp/selectTemp', name: '级联下拉、下拉框' }
               ]
             }
           }
@@ -101,7 +151,7 @@ export const routeList = [
           {
             path:'computerList',
             name:'computerList',
-            component:()=>import('@/views/pages/computer/index'),
+            component:() => import(/* webpackChunkName: "computerList" */ '@/views/pages/computer/index'),
             meta:{
               title:'电脑信息列表',
               breadcrumb: [
@@ -113,7 +163,7 @@ export const routeList = [
           {
             path:'addInfo',
             name:'addInfo',
-            component:()=>import('@/views/pages/computer/addInfo'),
+            component:() => import(/* webpackChunkName: "addInfo" */ '@/views/pages/computer/addInfo'),
             hidden: true,
             meta: {
               title: '新增电脑信息',
@@ -143,7 +193,7 @@ export const routeList = [
           {
             path:'phoneList',
             name:'phoneList',
-            component:()=>import('@/views/pages/phone/index'),
+            component:() => import(/* webpackChunkName: "phoneList" */ '@/views/pages/phone/index'),
             meta: {
               title: '手机列表',
               breadcrumb: [
@@ -155,7 +205,7 @@ export const routeList = [
           {
             path:'addPhone',
             name:'addPhone',
-            component:()=>import('@/views/pages/phone/addPhone'),
+            component:() => import(/* webpackChunkName: "addPhone" */ '@/views/pages/phone/addPhone'),
             hidden: true,
             meta: {
               title: '新增手机信息',
@@ -181,7 +231,7 @@ export const routeList = [
               {
                 path: 'otherList',
                 name: 'otherList',
-                component: () => import('@/views/pages/phone/other'),
+                component: () => import(/* webpackChunkName: "otherList" */ '@/views/pages/phone/other'),
                 meta: {
                   title: '其他类型',
                   breadcrumb: [
@@ -196,7 +246,7 @@ export const routeList = [
           {
             path:'phoneType',
             name:'phoneType',
-            component:()=>import('@/views/pages/phone/phoneType'),
+            component:() => import(/* webpackChunkName: "phoneType" */ '@/views/pages/phone/phoneType'),
             meta: {
               title: '手机类型',
               breadcrumb: [
@@ -222,7 +272,7 @@ export const routeList = [
           {
             path:'systemPage',
             name:'systemPage',
-            component:()=>import('@/views/system/index'),
+            component:() => import(/* webpackChunkName: "systemPage" */ '@/views/system/index'),
             meta: {
               title: '系统页面',
               breadcrumb: [
@@ -239,8 +289,8 @@ export const routeList = [
 /**
  * 详情页/新增/编辑
  */
-const detailPage = [
-];
+const detailPage = [];
+
 export default new Router({
   /*routes: [
     {
