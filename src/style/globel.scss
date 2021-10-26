@@ -1,0 +1,104 @@
+/* 滚动条样式 */
+::-webkit-scrollbar-thumb{
+  height: 50px;
+  outline-offset: -3px;
+  outline: 3px solid #fff;
+  -webkit-border-radius: 10px;
+  background-color: rgba(144,147,153,0.3);
+}
+::-webkit-scrollbar-thumb:hover{
+  height: 50px;
+  -webkit-border-radius: 10px;
+  background-color: rgba(144,147,153,0.5);
+}
+::-webkit-scrollbar{
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track-piece{
+  -webkit-border-radius: 0;
+}
+::-webkit-scrollbar-track { background-color: #fff; }
+::-webkit-scrollbar-button { background-color: #fff; display: none; }
+::-webkit-scrollbar-corner { background-color: #fff; }
+
+/** 菜单 */
+$bgColor: #1891ff;
+$hoverColor: #1683e6;
+$fontColor: #fff;
+$popColor: #ccc;
+.organMenu{
+  height: 100%;
+  background-color: $bgColor;
+  .horizontal-collapse-transition {
+    transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+  }
+  .el-menu{
+    width: 100%;
+    border: none;
+    background-color: $bgColor;
+    .el-menu-item{
+      color: $fontColor;
+    }
+    i[class^='el-icon']{
+      color: $fontColor;
+    }
+  }
+  .el-menu-vertical-warp{
+    .el-menu-item:hover, .el-menu-item:focus {
+      background-color: $hoverColor;
+    }
+    .el-menu-item {
+      &:hover, &:focus{
+        background-color: $hoverColor;
+      }
+      &.is-active{
+        box-shadow: none;
+        background-image: url("../assets/img/float.svg");
+        background-repeat: no-repeat;
+        background-size: 106% 112%;
+        background-position: -5px -2px;
+        &:hover{
+          background-image: none;
+          background-color: $hoverColor;
+        }
+      }
+    }
+    .el-submenu{
+      .el-submenu__title{
+        color: $fontColor;
+        &:hover, &:focus{
+          background-color: $hoverColor;
+        }
+        i{
+          color: $fontColor;
+        }
+      }
+      .el-menu--inline{
+        .el-menu-item {
+          padding-left: 54px !important;
+        }
+        .el-submenu{
+          .el-submenu__title{
+            padding-left: 54px !important;
+          }
+          .el-menu--inline .el-menu-item{
+            padding-left: 68px !important;
+          }
+        }
+      }
+    }
+  }
+}
+.menu-popup{
+  .el-menu-item{
+    &:hover, &:focus {
+      background-color: $popColor;
+    }
+  }
+  .el-submenu__title {
+    &:hover, &:focus {
+      background-color: $popColor;
+    }
+  }
+}
