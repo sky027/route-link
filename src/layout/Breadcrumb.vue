@@ -14,7 +14,10 @@ export default {
   data() {
     return {
       routeList: [],
-      currentPath: ''
+      currentPath: '',
+      //设置超时时间： 30分种
+      timeOut : 30 * 60 * 1000,
+      timer: null
     }
   },
   watch: {
@@ -32,6 +35,40 @@ export default {
       deep: true,
       immediate: true
     }
+  },
+  mounted() {
+    // 每30秒 调用检查时间的方法
+    this.$nextTick(function () {
+      this.timer = window.setInterval(this.checkTimeout, this.timeOut)
+    })
+    // 页面监听 按下鼠标更新操作时间
+    window.document.body.onclick = function () {
+      localStorage.setItem('lastTime', new Date().getTime() + '')
+    }
+  },
+  methods: {
+    checkTimeout() {
+      //更新当前时间
+      let currentTime = new Date().getTime()
+      let lastTime = localStorage.getItem('lastTime')
+      if (!lastTime) {
+        this.loginOut()
+      }
+      //判断是否超时
+      if (currentTime - lastTime > this.timeOut) {
+        this.loginOut()
+      }
+    },
+    loginOut() {
+      window.localStorage.clear()
+      window.localStorage.removeItem('lastTime')
+      this.$router.push('/login')
+      window.location.reload()
+    }
+  },
+  destroyed() {
+    window.document.body.onclick = null
+    window.clearInterval(this.timer)
   }
 }
 </script>

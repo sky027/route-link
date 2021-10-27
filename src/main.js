@@ -23,6 +23,17 @@ import './components/common/index'
 import request from './api/api'
 Vue.prototype.$request = request
 
+// v-chart统计图
+import VCharts from 'v-charts'
+Vue.use(VCharts);
+import echarts from 'echarts';
+Vue.prototype.$echarts = echarts;
+
+// Swiper轮播
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.prototype.$swiper = Swiper;
+
 
 Vue.config.productionTip = false
 

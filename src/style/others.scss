@@ -1,0 +1,34 @@
+.chart-container-box {
+  .charts-box{
+    height: 400px;
+    padding: 10px 30px;
+    position: relative;
+    .chart-title{
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .ec-box{
+      height: 85%;
+    }
+  }
+  &.pie {
+    display: flex;
+    flex-wrap: wrap;
+    .charts-box{
+      width: calc((100vw - 250px) / 2);
+    }
+  }
+  &.map{
+    display: flex;
+    flex-wrap: wrap;
+    .charts-box{
+      width: calc((100vw - 250px) / 2);
+      height: 550px;
+      .ve-map{
+        height: 95%;
+      }
+    }
+  }
+}

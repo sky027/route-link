@@ -5,6 +5,9 @@ const whiteList = ['/login', '/error/404', '/error/401']
 
 // 路由守卫拦截
 router.beforeEach((to, from, next) => {
+  if (!to.name) {
+    next('/error/404')
+  }
   // 读缓存，判断权限
   const token = window.localStorage.getItem('app_token')
   if (token) {

@@ -133,6 +133,116 @@ export const routeList = [
                 { path: '/otherTemp/selectTemp', name: '级联下拉、下拉框' }
               ]
             }
+          },
+          {
+            path:'swiperTemp',
+            name:'swiperTemp',
+            component:() => import(/* webpackChunkName: "swiperTemp" */ '@/views/pages/otherTemp/swiperTemp'),
+            meta:{
+              title:'轮播组件',
+              breadcrumb: [
+                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
+                { path: '/otherTemp/swiperTemp', name: '轮播组件' }
+              ]
+            }
+          },
+          {
+            path:'vueAnimation',
+            name:'vueAnimation',
+            component:() => import(/* webpackChunkName: "swiperTemp" */ '@/views/pages/otherTemp/vueAnimation'),
+            meta:{
+              title:'VUE动画',
+              breadcrumb: [
+                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
+                { path: '/otherTemp/vueAnimation', name: 'VUE动画' }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        path:'statisticsGraph',
+        name:'statisticsGraph',
+        component: { render (c) { return c('router-view') }},
+        meta:{
+          title:'统计图(v-chart)',
+          icon: 'el-icon-coin',
+          breadcrumb: [
+            { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' }
+          ]
+        },
+        children: [
+          {
+            path:'lineChart',
+            name:'lineChart',
+            component:() => import(/* webpackChunkName: "lineChart" */ '@/views/pages/statisticsChart/lineChart'),
+            meta:{
+              title:'折线图',
+              breadcrumb: [
+                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/lineChart', name: '折线图' }
+              ]
+            }
+          },
+          {
+            path:'barChart',
+            name:'barChart',
+            component:() => import(/* webpackChunkName: "barChart" */ '@/views/pages/statisticsChart/barChart'),
+            meta:{
+              title:'柱状图',
+              breadcrumb: [
+                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/barChart', name: '柱状图' }
+              ]
+            }
+          },
+          {
+            path:'pieChart',
+            name:'pieChart',
+            component:() => import(/* webpackChunkName: "pieChart" */ '@/views/pages/statisticsChart/pieChart'),
+            meta:{
+              title:'扇形图/环形图',
+              breadcrumb: [
+                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/pieChart', name: '扇形图/环形图' }
+              ]
+            }
+          },
+          {
+            path:'otherChartA',
+            name:'otherChartA',
+            component:() => import(/* webpackChunkName: "otherChartA" */ '@/views/pages/statisticsChart/otherChartA'),
+            meta:{
+              title:'其他类型A',
+              breadcrumb: [
+                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/otherChartA', name: '其他类型A' }
+              ]
+            }
+          },
+          {
+            path:'otherChartB',
+            name:'otherChartB',
+            component:() => import(/* webpackChunkName: "otherChartB" */ '@/views/pages/statisticsChart/otherChartB'),
+            meta:{
+              title:'其他类型B',
+              breadcrumb: [
+                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/otherChartB', name: '其他类型B' }
+              ]
+            }
+          },
+          {
+            path:'chartEvent',
+            name:'chartEvent',
+            component:() => import(/* webpackChunkName: "chartEvent" */ '@/views/pages/statisticsChart/chartEvent'),
+            meta:{
+              title:'图形事件',
+              breadcrumb: [
+                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/chartEvent', name: '图形事件' }
+              ]
+            }
           }
         ]
       },
