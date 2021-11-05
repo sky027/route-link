@@ -12,13 +12,13 @@
           </div>
           <el-form ref="ruleForm" :model="formData" :rules="rules" class="form">
             <el-form-item prop="userName">
-              <el-input class="input-item user" v-model.trim="formData.userName" clearable placeholder="请输入用户名"></el-input>
+              <el-input class="input-item user" @keyup.enter.native="handleLogin" v-model.trim="formData.userName" clearable placeholder="请输入用户名"></el-input>
             </el-form-item>
             <el-form-item prop="password">
-              <el-input class="input-item pwd" v-model.trim="formData.password" clearable type="password" auto-complete="new-password" placeholder="请输入用户密码"></el-input>
+              <el-input class="input-item pwd" @keyup.enter.native="handleLogin" v-model.trim="formData.password" clearable type="password" auto-complete="new-password" placeholder="请输入用户密码"></el-input>
             </el-form-item>
             <el-form-item prop="authCode" class="validCode">
-              <el-input class="input-item yzm" v-model.trim="formData.authCode" clearable placeholder="请输入验证码"></el-input>
+              <el-input class="input-item yzm" @keyup.enter.native="handleLogin" v-model.trim="formData.authCode" clearable placeholder="请输入验证码"></el-input>
               <div class="codeBtn" id="v_container"></div>
             </el-form-item>
           </el-form>
@@ -29,7 +29,6 @@
           <div class="btn">
             <el-button :loading="loading" class="loginBtn"
                type="primary"
-                       @keydown.enter="handleLogin"
                @click="handleLogin">
               <span class="txt"> 登 录 </span>
             </el-button>
@@ -95,8 +94,7 @@ export default {
       if (Cookies.get('isCheck') === '1') {
         console.log('解密前 - 1', Cookies.getJSON('loginInfo'))
         const data = JSON.parse(window.atob(Cookies.getJSON('loginInfo')))
-        console.log('解密后 - 2', window.atob(Cookies.getJSON('loginInfo')))
-        console.log('解密后 - 3', data)
+        console.log('解密后 - 2', data)
         this.formData.userName = data.userName
         this.formData.password = data.password
         this.rememberPwd = true

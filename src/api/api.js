@@ -1,5 +1,5 @@
+// import './mock/index'
 import axios from 'axios'
-import store from '@/store/index'
 import { Loading } from 'element-ui'
 // const prodEnv = require('./prod.env')
 import { message } from '@/utils/message'
@@ -8,7 +8,7 @@ import router from '../router/index'
 
 // const isDev = process.NODE_ENV === 'development'
 // let HOST_NAME = isDev ? `${window.origin}/api` : window.location.origin
-const service = axios.create({
+axios.create({
   baseURL: window.location.origin,
   withCredentials: true,
   headers: { 'content-type': 'application/json;charset=UTF-8' },
@@ -37,13 +37,15 @@ function blobToJson(res) {
 /**
  * 发送请求时配置
  */
-service.interceptors.request.use(
+axios.interceptors.request.use(
   config => {
     // 可以在此处判断token添加header等配置
-    const token = store.getters.token
+    // const token = store.getters.token
+    const token = window.localStorage.getItem('app_token')
     if (token) {
-      return config
+      config.headers['token'] = token
     }
+    return config
   },
   error => {
     return Promise.reject(error)
@@ -53,17 +55,22 @@ service.interceptors.request.use(
  * 请求响应时
  * 处理不同的返回值code
  */
-service.interceptors.response.use(
+axios.interceptors.response.use(
   response => {
-    const res = response.data;
-    if (res.returnCode === '1') {
-      return res
+    if (request.loadingTemp) {
+      request.endLoading()
     }
-    if (res.code === 401) {
+    const res = response.data;
+    if (response.status === 200) {
+      return res
+    } else if (response.status === 401) {
       // 重新登录
+      message.error('无权限')
       window.localStorage.clear();
       store.dispatch('system/removeToken');
       router.push('/login');
+    } else {
+      router.push('/error/404')
     }
   },
   error => {
@@ -84,7 +91,8 @@ const request = {
       data
     }
     if (responseType) { options.responseType = responseType }
-    return service(options).then(res => {
+    request.startLoading()
+    return axios(options).then(res => {
         return Promise.resolve(res)
       }, err => {
         return Promise.reject(err)
@@ -104,8 +112,8 @@ const request = {
     request.api('get', url, data)
       .then(response => {
         callback && callback(response)
-      }).catch(() => {
-      catchFun && catchFun()
+      }).catch((err) => {
+      catchFun && catchFun(err)
     })
   },
   downloadPOST: (fileName, url, data, callback, catchFun) => {
@@ -166,6 +174,19 @@ const request = {
         })
       })
     })
+  },
+  loadingTemp: null,
+  startLoading: (text) => {
+    request.loadingTemp = Loading.service({
+      lock: true,
+      text: text ? text : '加载中....',
+      spinner: 'el-icon-loading',
+      background: 'rgba(255,255,255,0.8)',
+      // background: 'rgba(0, 0, 0, 0.7)'
+    })
+  },
+  endLoading: () => {
+    request.loadingTemp.close();
   }
 }
 

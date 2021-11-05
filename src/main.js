@@ -23,6 +23,8 @@ import './components/common/index'
 import request from './api/api'
 Vue.prototype.$request = request
 
+import './api/mock/index'
+
 // v-chart统计图
 import VCharts from 'v-charts'
 Vue.use(VCharts);

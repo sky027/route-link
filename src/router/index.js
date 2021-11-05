@@ -149,12 +149,36 @@ export const routeList = [
           {
             path:'vueAnimation',
             name:'vueAnimation',
-            component:() => import(/* webpackChunkName: "swiperTemp" */ '@/views/pages/otherTemp/vueAnimation'),
+            component:() => import(/* webpackChunkName: "vueAnimation" */ '@/views/pages/otherTemp/vueAnimation'),
             meta:{
               title:'VUE动画',
               breadcrumb: [
                 { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
                 { path: '/otherTemp/vueAnimation', name: 'VUE动画' }
+              ]
+            }
+          },
+          {
+            path:'mockData',
+            name:'mockData',
+            component:() => import(/* webpackChunkName: "mockData" */ '@/views/pages/otherTemp/mockData'),
+            meta:{
+              title:'MOCK数据',
+              breadcrumb: [
+                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
+                { path: '/otherTemp/mockData', name: 'MOCK数据' }
+              ]
+            }
+          },
+          {
+            path: 'encrypt',
+            name:'encrypt',
+            component:() => import(/* webpackChunkName: "encrypt" */ '@/views/pages/otherTemp/encrypt'),
+            meta:{
+              title:'加密/解密',
+              breadcrumb: [
+                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
+                { path: '/otherTemp/encrypt', name: '加密/解密' }
               ]
             }
           }
