@@ -83,19 +83,19 @@ export default {
       //获取年月日时分秒
       var year = nowdate.getFullYear(),
         month = nowdate.getMonth()+1,
-        day = nowdate.getDay(),
+        day = nowdate.getDate(),
         hours = nowdate.getHours(),
         minutes = nowdate.getMinutes(),
         seconds = nowdate.getSeconds(),
-        date = nowdate.getDate();
+        date = nowdate.getDay();
       var weekday =["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
       // 获取日期id
-      date_info.innerHTML=year+"年"+month+"月"+day+"日   "+weekday[day];
+      date_info.innerHTML=year+"年"+month+"月"+day+"日   "+weekday[date];
       hour_time.innerHTML = hours >=10 ? hours : "0"+hours;
       minute_time.innerHTML = minutes >=10 ? minutes : "0"+minutes;
       second_time.innerHTML = seconds >=10 ? seconds : "0"+seconds;
       var h = hour_time.innerHTML + ':' + minute_time.innerHTML + ':' +second_time.innerHTML;
-      var times = year+"年"+month+"月"+day+"日  "+weekday[day];
+      var times = year+"年"+month+"月"+day+"日  "+weekday[date];
       this.current = times;
       console.log(times + '   ' + h);
       //时分秒针设置
