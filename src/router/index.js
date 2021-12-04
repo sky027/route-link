@@ -181,6 +181,18 @@ export const routeList = [
                 { path: '/otherTemp/encrypt', name: '加密/解密' }
               ]
             }
+          },
+          {
+            path: 'nodeFile',
+            name:'nodeFile',
+            component:() => import(/* webpackChunkName: "nodeFile" */ '@/views/pages/otherTemp/nodeFile'),
+            meta:{
+              title:'node文件',
+              breadcrumb: [
+                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
+                { path: '/otherTemp/nodeFile', name: 'node文件' }
+              ]
+            }
           }
         ]
       },

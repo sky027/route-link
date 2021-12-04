@@ -36,6 +36,13 @@ import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.prototype.$swiper = Swiper;
 
+// 拼图验证码
+import SlideVerify from '../node_modules/vue-monoplasty-slide-verify'
+Vue.use(SlideVerify)
+
+// 文件
+import filesFn from "./utils/makeFile";
+Vue.prototype.$files = filesFn
 
 Vue.config.productionTip = false
 

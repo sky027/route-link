@@ -49,11 +49,15 @@
       </div>
     </div>
     <div style="height: 30px;"></div>
+    <div>
+      <el-button @click="encryptRsa">RSA加密</el-button>
+    </div>
   </div>
 </template>
 
 <script>
-import {encryptAndDecode} from "../../../utils/encryp";
+import {encryptAndDecode, rsaEncrypt} from "../../../utils/encryp";
+import CommonUtil from "../../../utils/commonUtil";
 
 export default {
   name: 'encrypt',
@@ -137,6 +141,40 @@ export default {
       } else {
         this.decryptForm.result = '';
       }
+    },
+    encryptRsa() {
+      debugger
+      console.log(CommonUtil.getUUID());
+      const data = {
+        "appFile": "['16111344759811', 'downloadUrl']",
+        "appFilename": "",
+        "appName": "和装维",
+        "createdTime": "1603942468144",
+        "createdUser": "张三3",
+        "deleted": "1",
+        "description": "<p>1，扫描对焦优化</p>\n<p>2，提现UI优化</p>",
+        "deviceType": "2",
+        "downloadUrl": "https://117.134.46.37:31021/moses/20210125/10.1.27.0_IRS-debug-v1.1.3-show.apk",
+        "forceUpgrade": "1",
+        "id": "105115973592350728",
+        "mainVersion": "",
+        "released": "1",
+        "updatedTime": "1603942468144",
+        "updatedUser": "张三3",
+        "version": "1.0.5"
+      }
+      const param = {
+        "released": "1",
+        "updatedTime": "1603942468144",
+        "updatedUser": "张三3",
+        "version": "1.0.5"
+      }
+      console.log('加密前', param);
+      const str = rsaEncrypt.encrypt(JSON.stringify(param));
+      console.log('加密后', str);
+
+      const str2 = rsaEncrypt.decrypt(str);
+      console.log('解密后', JSON.parse(str2));
     }
   }
 }

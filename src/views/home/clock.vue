@@ -37,12 +37,16 @@ export default {
   name: "clock",
   data() {
     return {
-      current: ''
+      current: '',
+      timer: null
     }
   },
   mounted() {
       this.initNumXY();
-      window.setInterval(this.setTime, 1000)
+      this.timer = window.setInterval(this.setTime, 1000)
+  },
+  destroyed() {
+    window.clearInterval(this.timer)
   },
   methods: {
     initNumXY() {
