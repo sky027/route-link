@@ -5,6 +5,9 @@
 </template>
 
 <script>
+// import '@/utils/disableDevTool'
+import '@/utils/disableTool'
+
 export default {
   name: 'App',
   data() {
