@@ -40,9 +40,14 @@ Vue.prototype.$swiper = Swiper;
 import SlideVerify from '../node_modules/vue-monoplasty-slide-verify'
 Vue.use(SlideVerify)
 
+/**
 // 文件
 import filesFn from "./utils/makeFile";
 Vue.prototype.$files = filesFn
+*/
+
+// jQuery
+import $ from 'jquery'
 
 Vue.config.productionTip = false
 

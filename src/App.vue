@@ -6,7 +6,7 @@
 
 <script>
 // import '@/utils/disableDevTool'
-import '@/utils/disableTool'
+// import '@/utils/disableTool'
 
 export default {
   name: 'App',

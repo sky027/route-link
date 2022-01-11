@@ -8,6 +8,7 @@
             height: "30", //默认canvas高度
             type: "blend", //图形验证码默认类型blend:数字字母混合类型、number:纯数字、letter:纯字母
             code: "",
+            length: 4
         }
         if(Object.prototype.toString.call(options) === "[object Object]") { //判断传入参数类型
             for(let i in options) { //根据传入的参数，修改默认参数值
@@ -68,7 +69,7 @@
                 txtArr = this.options.numArr;
             }
 
-            for(let i = 1; i <= size; i++) {
+            for(let i = 1; i <= this.options.length; i++) {
                 let txt = txtArr[randomNum(0, txtArr.length)];
                 this.options.code += txt;
                 ctx.font = randomNum(this.options.height / 2, this.options.height) + 'px SimHei'; //随机生成字体大小
@@ -77,7 +78,7 @@
                 ctx.shadowOffsetY = randomNum(-3, 3);
                 ctx.shadowBlur = randomNum(-3, 3);
                 ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
-                let x = this.options.width / (size + 1) * i;
+                let x = this.options.width / (this.options.length + 1) * i;
                 let y = this.options.height / 2;
                 let deg = randomNum(-30, 30);
                 /**设置旋转角度和坐标原点**/
@@ -89,7 +90,7 @@
                 ctx.translate(-x, -y);
             }
             /**绘制干扰线**/
-            for(let i = 0; i < size; i++) {
+            for(let i = 0; i < this.options.length; i++) {
                 ctx.strokeStyle = randomColor(40, 180);
                 ctx.beginPath();
                 ctx.moveTo(randomNum(0, this.options.width), randomNum(0, this.options.height));

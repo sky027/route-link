@@ -187,10 +187,10 @@ export const routeList = [
             name:'nodeFile',
             component:() => import(/* webpackChunkName: "nodeFile" */ '@/views/pages/otherTemp/nodeFile'),
             meta:{
-              title:'node文件',
+              title:'拼图验证码',
               breadcrumb: [
                 { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
-                { path: '/otherTemp/nodeFile', name: 'node文件' }
+                { path: '/otherTemp/nodeFile', name: '拼图验证码' }
               ]
             }
           }
@@ -280,6 +280,32 @@ export const routeList = [
               ]
             }
           }
+        ]
+      },
+      {
+        path:'examples',
+        name:'examples',
+        component: { render (c) { return c('router-view') }},
+        meta:{
+          title:'特效实例',
+          icon: 'el-icon-notebook-2',
+          breadcrumb: [
+            { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' }
+          ]
+        },
+        children: [
+          {
+            path:'weather',
+            name:'weather',
+            component:() => import(/* webpackChunkName: "weather" */ '@/views/system/index'),
+            meta: {
+              title: '天气展示',
+              breadcrumb: [
+                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
+                { path: '/examples/weather', name: '天气展示'}
+              ]
+            }
+          },
         ]
       },
       {

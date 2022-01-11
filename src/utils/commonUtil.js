@@ -72,6 +72,13 @@ const CommonUtil = {
     }
 
     return ID.join("");
+  },
+
+  /**
+   * 获取指定范围内的随机数
+   */
+  getRoundNum(start, end) {
+    return Math.round(Math.random() * (end - start) + start);
   }
 
 };

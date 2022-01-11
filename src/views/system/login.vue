@@ -109,9 +109,9 @@ export default {
           that.loading = true
           // 模拟缓存 记住密码
           that.loading = false
+          const token = CommonUtil.getUUID(true)
+          this.$store.dispatch('system/setToken', token)
           if (that.rememberPwd) {
-            const token = CommonUtil.getUUID(true)
-            this.$store.dispatch('system/setToken', token)
             Cookies.set('isCheck', '1')
             Cookies.set('loginInfo', window.btoa(JSON.stringify(that.formData)))
             console.log('加密后', window.btoa(JSON.stringify(that.formData)))
@@ -126,7 +126,6 @@ export default {
       })
     },
     clearCookie() {
-      window.localStorage.clear()
       Cookies.set('isCheck', '0')
       Cookies.remove('loginInfo')
     }
