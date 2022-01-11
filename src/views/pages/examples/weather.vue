@@ -1,5 +1,5 @@
 <template>
-  <div class="weather">AAAA
+  <div class="weather">
     <div class="box-we">
       <ul class="be-over">
         <li class="item" v-for="(item, index) in weather" :key="index">
@@ -41,7 +41,7 @@ export default {
           show: true,
           position: 'bottom',
           textStyle: {
-            color: 'rgba(255, 255, 255, 0.8)',
+            color: 'rgba(255, 255, 255, 0.9)',
             fontSize: 12,
           },
           formatter: (param) => {
@@ -57,12 +57,6 @@ export default {
           }
         },
         animation: false,
-        markPoint: {     //显示一定区域内的最大值和最小值
-          data: [
-            { type: 'max', name: '最大值' },
-            { type: 'min', name: '最小值' }
-          ]
-        }
       };
       this.chartData.push(d)
     }
@@ -80,7 +74,6 @@ export default {
       const dom = document.getElementById('chart_over');
       const chart = this.$echarts.init(dom);
       const option = {
-        color: ['#3aa1ff', '#4cca73'],
         grid: {
           top: '12%',
           left: '-2%',
@@ -111,7 +104,7 @@ export default {
   .box-we{
     width: 770px;
     height: 410px;
-    //margin: 20px auto;
+    margin: 20px auto;
     background: #91a5b5;
     position: relative;
     .be-over{
