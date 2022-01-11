@@ -95,6 +95,7 @@ export default {
     }
     .txt{
       display: inline-block;
+      font-size: 16px;
     }
     .split-line{
       font-size: 20px;

@@ -297,7 +297,7 @@ export const routeList = [
           {
             path:'weather',
             name:'weather',
-            component:() => import(/* webpackChunkName: "weather" */ '@/views/system/index'),
+            component:() => import(/* webpackChunkName: "weather" */ '@/views/pages/examples/weather'),
             meta: {
               title: '天气展示',
               breadcrumb: [
