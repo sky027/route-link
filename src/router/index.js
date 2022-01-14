@@ -306,6 +306,78 @@ export const routeList = [
               ]
             }
           },
+          {
+            path:'buttons',
+            name:'buttons',
+            component:() => import(/* webpackChunkName: "buttons" */ '@/views/pages/examples/buttons/index'),
+            meta: {
+              title: '30种按钮特效',
+              breadcrumb: [
+                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
+                { path: '/examples/buttons', name: '30种按钮特效'}
+              ]
+            }
+          },
+          {
+            path:'cssClock',
+            name:'cssClock',
+            component:() => import(/* webpackChunkName: "cssClock" */ '@/views/pages/examples/cssClock'),
+            meta: {
+              title: 'CSS时钟',
+              breadcrumb: [
+                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
+                { path: '/examples/cssClock', name: 'CSS时钟'}
+              ]
+            }
+          },
+          {
+            path:'ledClock',
+            name:'LedClock',
+            component:() => import(/* webpackChunkName: "LedClock" */ '@/views/pages/examples/LedClock/index'),
+            meta: {
+              title: 'LED时钟',
+              breadcrumb: [
+                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
+                { path: '/examples/ledClock', name: 'LED时钟'}
+              ]
+            }
+          },
+          {
+            path:'3DBackground',
+            name:'3DBackground',
+            component:() => import(/* webpackChunkName: "3DBackground" */ '@/views/pages/examples/background/index'),
+            meta: {
+              title: '3D动态背景',
+              breadcrumb: [
+                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
+                { path: '/examples/3DBackground', name: '3D动态背景'}
+              ]
+            }
+          },
+          {
+            path:'ringTime',
+            name:'ringTime',
+            component:() => import(/* webpackChunkName: "ringTime" */ '@/views/pages/examples/ringTime/index'),
+            meta: {
+              title: '环形中文时间',
+              breadcrumb: [
+                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
+                { path: '/examples/ringTime', name: '环形中文时间'}
+              ]
+            }
+          },
+          {
+            path:'particleBall',
+            name:'particleBall',
+            component:() => import(/* webpackChunkName: "particleBall" */ '@/views/pages/examples/particleBall'),
+            meta: {
+              title: '粒子球',
+              breadcrumb: [
+                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
+                { path: '/examples/particleBall', name: '粒子球'}
+              ]
+            }
+          },
         ]
       },
       {

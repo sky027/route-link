@@ -5,16 +5,20 @@
       <i v-if="index > 0" class="split-line" :class="{'color': index === routeList.length-1 && routeList.length > 1}">/</i>
       <span class="txt" :class="{'color': index === routeList.length-1 && routeList.length > 1}">{{ item.name }}</span>
     </div>
+    <div class="times">当前时间：{{ nowTime }}</div>
   </div>
 </template>
 
 <script>
+import CommonUtil from "../utils/commonUtil";
+
 export default {
   name: 'Breadcrumb',
   data() {
     return {
       routeList: [],
       currentPath: '',
+      nowTime: '',
       //设置超时时间： 30分种
       timeOut : 30 * 60 * 1000,
       timer: null
@@ -37,6 +41,10 @@ export default {
     }
   },
   mounted() {
+    const that = this;
+    window.setInterval(() => {
+      that.nowTime = CommonUtil.translateTime(new Date().getTime())
+    }, 1000)
     // 每30秒 调用检查时间的方法
     this.$nextTick(function () {
       this.timer = window.setInterval(this.checkTimeout, this.timeOut)
@@ -82,6 +90,7 @@ export default {
   color: #333333;
   padding: 0 15px;
   box-shadow: 0 3px 0 rgba(204, 204, 204, 0.5);
+  position: relative;
   .bread-item{
     display: flex;
     i {
@@ -104,6 +113,15 @@ export default {
     .color{
       color: #999999;
     }
+  }
+  .times{
+    width: 210px;
+    height: 47px;
+    line-height: 47px;
+    color: #999999;
+    position: absolute;
+    top: 0;
+    right: 30px;
   }
 }
 </style>

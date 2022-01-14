@@ -1,5 +1,12 @@
 <template>
   <div class="weather">
+    <div class="opt">
+      <el-button type="primary" icon="el-icon-refresh" @click="refresh('1')">手动刷新</el-button> <br> <br>
+      <el-select v-model="times" clearable placeholder="请选择时间">
+        <el-option v-for="item in [2, 4, 6, 8]" :key="item" :value="item" :label="item + ' 秒'" />
+      </el-select>
+      <el-button type="primary" icon="el-icon-refresh" @click="refreshTime">定时刷新</el-button>
+    </div>
     <div class="box-we">
       <ul class="be-over">
         <li class="item" v-for="(item, index) in weather" :key="index">
@@ -7,7 +14,7 @@
           <p class="item-txt">{{item.date}}</p>
           <p class="item-txt d"><i :class="item.icon"></i></p>
           <p class="item-txt b"><i class="el-icon-position"></i> <i> <{{ item.windLevel }}级</i></p>
-          <p class="item-txt c"><i>{{ item.statusName }}</i></p>
+          <p class="item-txt c"><i class="status" :style="{'background': item.color}">{{ item.statusName }}</i></p>
         </li>
       </ul>
       <div class="af-over" id="chart_over"></div>
@@ -22,6 +29,9 @@ export default {
   data() {
     return {
       weather: [],
+      chartObj: null,
+      times: 2,
+      intervalTime: null,
       chartData: []
     }
   },
@@ -70,9 +80,28 @@ export default {
     this.initLineChart()
   },
   methods: {
+    refresh(type) {
+      if (type === '1' && this.intervalTime) {
+        window.clearInterval(this.intervalTime)
+      }
+      this.weather = weatherData.initData();
+      this.chartData[0].data = [];
+      this.chartData[1].data = [];
+      this.weather.forEach(item => {
+        this.chartData[0].data.push(item.maxTemper)
+        this.chartData[1].data.push(item.minTemper)
+      })
+      this.initLineChart();
+    },
+    refreshTime() {
+      window.clearInterval(this.intervalTime)
+      this.intervalTime = window.setInterval(() => {
+        this.refresh('2')
+      }, parseInt(this.times) * 1000)
+    },
     initLineChart() {
       const dom = document.getElementById('chart_over');
-      const chart = this.$echarts.init(dom);
+      this.chartObj = this.$echarts.init(dom);
       const option = {
         grid: {
           top: '12%',
@@ -91,7 +120,12 @@ export default {
         },
         series: this.chartData
       };
-      chart.setOption(option, true);
+      this.chartObj.setOption(option, true);
+    },
+    destroyed() {
+      if (this.intervalTime) {
+        window.clearInterval(this.intervalTime)
+      }
     }
   }
 }
@@ -101,6 +135,9 @@ export default {
 .weather{
   padding: 20px;
   position: relative;
+  .opt{
+    height: 50px;
+  }
   .box-we{
     width: 770px;
     height: 410px;
@@ -143,6 +180,15 @@ export default {
         }
         &.d{
           font-size: 28px;
+        }
+        .status{
+          display: inline-block;
+          width: 42px;
+          height: 20px;
+          line-height: 20px;
+          border-radius: 9px;
+          color: #fff;
+          font-size: 12px;
         }
       }
     }

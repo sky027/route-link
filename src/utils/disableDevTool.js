@@ -23,7 +23,7 @@
       console.log(
         "%c%c 警告：禁止非法启用调试模式，请重新登录",
         "line-height:48px;",
-        "line-height:48px;padding:4px;background:#fe0000;color:#fff;font-size:16px;margin-right:15px;font-weight: bold;"
+        "line-height:48px;padding:4px;background:#fe0000;color:#fff;fonts-size:16px;margin-right:15px;fonts-weight: bold;"
       );
       window.localStorage.clear()
       window.sessionStorage.clear()

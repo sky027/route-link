@@ -5,9 +5,6 @@ const whiteList = ['/login', '/error/404', '/error/401']
 
 // 路由守卫拦截
 router.beforeEach((to, from, next) => {
-  if (!to.name) {
-    next('/error/404')
-  }
   // 读缓存，判断权限
   const token = window.localStorage.getItem('app_token')
   if (token) {
@@ -28,15 +25,27 @@ router.beforeEach((to, from, next) => {
     // 设置title
     document.title = to.meta.title
   } else {
-    // 无token时
+    // 无token时, 是否属于白名单
     if (whiteList.includes(to.path)) {
       next()
+      if (to.name === '404') {
+        document.title = '404! 页面不存在'
+      } else if (to.name === '401') {
+        document.title = '401! 无权限'
+      } else {
+        document.title = '个人测试案例项目'
+      }
       // window.localStorage.clear()
     } else {
-      // 跳转登录页
-      next('/login')
+      // 是否是内部路由页面
+      if (!to.name) {
+        next('/error/404')
+      } else {
+        // 跳转登录页
+        next('/login')
+        document.title = '个人测试案例项目'
+      }
     }
-    document.title = '个人测试案例项目'
   }
 })
 
