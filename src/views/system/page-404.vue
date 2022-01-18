@@ -7,7 +7,6 @@
       <div class="err">页面发生错误，点击 <span class="bak" @click="back"> 返回首页</span></div>
       <div class="time"><i>{{ time }}</i>秒后返回首页</div>
     </div>
-    <el-button @click="back">返回首页</el-button>
   </div>
 </template>
 

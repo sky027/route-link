@@ -42,9 +42,10 @@ export const routeList = [
         component: () => import(/* webpackChunkName: "Index" */ '@/views/home/index'),
         meta:{
           title:'首页',
+          label: 'index',
           icon: 'el-icon-s-home',
           breadcrumb: [
-            { path: '/index', name: '首页', icon: 'el-icon-s-home' }
+            { path: '/index', name: '首页', label: 'index', icon: 'el-icon-s-home' }
           ]
         },
       },
@@ -54,9 +55,10 @@ export const routeList = [
         component: { render (c) { return c('router-view') }},
         meta:{
           title:'表格组件',
+          label: 'tabTemp',
           icon: 'el-icon-s-grid',
           breadcrumb: [
-            { path: '/tablePage', name: '表格组件', icon: 'el-icon-s-grid' }
+            { path: '/tablePage', name: '表格组件', label: 'tabTemp', icon: 'el-icon-s-grid' }
           ]
         },
         children: [
@@ -66,9 +68,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "NormalTable" */ '@/views/pages/tables/normalTable'),
             meta:{
               title:'普通列表',
+              label: 'normalTab',
               breadcrumb: [
-                { path: '/tablePage', name: '表格组件', icon: 'el-icon-s-grid' },
-                { path: '/tablePage/normalTable', name: '普通列表'}
+                { path: '/tablePage', name: '表格组件', label: 'tabTemp', icon: 'el-icon-s-grid' },
+                { path: '/tablePage/normalTable', label: 'normalTab', name: '普通列表'}
               ]
             }
           },
@@ -78,9 +81,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "TreeTable" */ '@/views/pages/tables/treeTable'),
             meta:{
               title:'树型列表',
+              label: 'treeTab',
               breadcrumb: [
-                { path: '/tablePage', name: '表格组件', icon: 'el-icon-s-grid' },
-                { path: '/tablePage/treeTable', name: '树型列表'}
+                { path: '/tablePage', name: '表格组件', label: 'tabTemp', icon: 'el-icon-s-grid' },
+                { path: '/tablePage/treeTable', label: 'treeTab', name: '树型列表'}
               ]
             }
           },
@@ -90,9 +94,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "TotalList" */ '@/views/pages/tables/totalList'),
             meta:{
               title:'合计列表',
+              label: 'sumTab',
               breadcrumb: [
-                { path: '/tablePage', name: '表格组件', icon: 'el-icon-s-grid' },
-                { path: '/tablePage/totalList', name: '合计列表'}
+                { path: '/tablePage', name: '表格组件', label: 'tabTemp', icon: 'el-icon-s-grid' },
+                { path: '/tablePage/totalList', label: 'sumTab', name: '合计列表'}
               ]
             }
           },
@@ -102,9 +107,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "MergeTable" */ '@/views/pages/tables/mergeTable'),
             meta:{
               title:'合并表格',
+              label: 'mergeTab',
               breadcrumb: [
-                { path: '/tablePage', name: '表格组件', icon: 'el-icon-s-grid' },
-                { path: '/tablePage/mergeTable', name: '合并表格' }
+                { path: '/tablePage', name: '表格组件', label: 'tabTemp', icon: 'el-icon-s-grid' },
+                { path: '/tablePage/mergeTable', label: 'mergeTab', name: '合并表格' }
               ]
             }
           }
@@ -116,9 +122,10 @@ export const routeList = [
         component: { render (c) { return c('router-view') }},
         meta:{
           title:'其他类型组件',
+          label: 'otherTemp',
           icon: 'el-icon-document',
           breadcrumb: [
-            { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' }
+            { path: '/otherTemp', name: '其他类型组件', label: 'otherTemp', icon: 'el-icon-document' }
           ]
         },
         children: [
@@ -128,9 +135,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "SelectTemp" */ '@/views/pages/otherTemp/selectTemp'),
             meta:{
               title:'级联下拉、下拉框',
+              label: 'selectTemp',
               breadcrumb: [
-                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
-                { path: '/otherTemp/selectTemp', name: '级联下拉、下拉框' }
+                { path: '/otherTemp', name: '其他类型组件', label: 'otherTemp', icon: 'el-icon-document' },
+                { path: '/otherTemp/selectTemp', label: 'selectTemp', name: '级联下拉、下拉框' }
               ]
             }
           },
@@ -140,9 +148,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "swiperTemp" */ '@/views/pages/otherTemp/swiperTemp'),
             meta:{
               title:'轮播组件',
+              label: 'swiperTemp',
               breadcrumb: [
-                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
-                { path: '/otherTemp/swiperTemp', name: '轮播组件' }
+                { path: '/otherTemp', name: '其他类型组件', label: 'otherTemp', icon: 'el-icon-document' },
+                { path: '/otherTemp/swiperTemp', label: 'swiperTemp', name: '轮播组件' }
               ]
             }
           },
@@ -152,9 +161,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "vueAnimation" */ '@/views/pages/otherTemp/vueAnimation'),
             meta:{
               title:'VUE动画',
+              label: 'vueAnimation',
               breadcrumb: [
-                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
-                { path: '/otherTemp/vueAnimation', name: 'VUE动画' }
+                { path: '/otherTemp', name: '其他类型组件', label: 'otherTemp', icon: 'el-icon-document' },
+                { path: '/otherTemp/vueAnimation', label: 'vueAnimation', name: 'VUE动画' }
               ]
             }
           },
@@ -164,9 +174,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "mockData" */ '@/views/pages/otherTemp/mockData'),
             meta:{
               title:'MOCK数据',
+              label: 'mockData',
               breadcrumb: [
-                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
-                { path: '/otherTemp/mockData', name: 'MOCK数据' }
+                { path: '/otherTemp', name: '其他类型组件', label: 'otherTemp', icon: 'el-icon-document' },
+                { path: '/otherTemp/mockData', label: 'mockData', name: 'MOCK数据' }
               ]
             }
           },
@@ -176,21 +187,23 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "encrypt" */ '@/views/pages/otherTemp/encrypt'),
             meta:{
               title:'加密/解密',
+              label: 'encrypt',
               breadcrumb: [
-                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
-                { path: '/otherTemp/encrypt', name: '加密/解密' }
+                { path: '/otherTemp', name: '其他类型组件', label: 'otherTemp', icon: 'el-icon-document' },
+                { path: '/otherTemp/encrypt', label: 'encrypt', name: '加密/解密' }
               ]
             }
           },
           {
-            path: 'nodeFile',
-            name:'nodeFile',
+            path: 'imageCode',
+            name:'imageCode',
             component:() => import(/* webpackChunkName: "nodeFile" */ '@/views/pages/otherTemp/nodeFile'),
             meta:{
               title:'拼图验证码',
+              label: 'imageCode',
               breadcrumb: [
-                { path: '/otherTemp', name: '其他类型组件', icon: 'el-icon-document' },
-                { path: '/otherTemp/nodeFile', name: '拼图验证码' }
+                { path: '/otherTemp', name: '其他类型组件', label: 'otherTemp', icon: 'el-icon-document' },
+                { path: '/otherTemp/imageCode', label: 'imageCode', name: '拼图验证码' }
               ]
             }
           }
@@ -202,9 +215,10 @@ export const routeList = [
         component: { render (c) { return c('router-view') }},
         meta:{
           title:'统计图(v-chart)',
+          label: 'summaryGraph',
           icon: 'el-icon-coin',
           breadcrumb: [
-            { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' }
+            { path: '/statisticsGraph', label: 'summaryGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' }
           ]
         },
         children: [
@@ -214,9 +228,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "lineChart" */ '@/views/pages/statisticsChart/lineChart'),
             meta:{
               title:'折线图',
+              label: 'lineChart',
               breadcrumb: [
-                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
-                { path: '/statisticsGraph/lineChart', name: '折线图' }
+                { path: '/statisticsGraph', name: '统计图(v-chart)', label: 'summaryGraph', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/lineChart', label: 'lineChart', name: '折线图' }
               ]
             }
           },
@@ -226,9 +241,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "barChart" */ '@/views/pages/statisticsChart/barChart'),
             meta:{
               title:'柱状图',
+              label: 'barChart',
               breadcrumb: [
-                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
-                { path: '/statisticsGraph/barChart', name: '柱状图' }
+                { path: '/statisticsGraph', name: '统计图(v-chart)', label: 'summaryGraph', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/barChart', label: 'barChart', name: '柱状图' }
               ]
             }
           },
@@ -238,9 +254,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "pieChart" */ '@/views/pages/statisticsChart/pieChart'),
             meta:{
               title:'扇形图/环形图',
+              label: 'ringChart',
               breadcrumb: [
-                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
-                { path: '/statisticsGraph/pieChart', name: '扇形图/环形图' }
+                { path: '/statisticsGraph', name: '统计图(v-chart)', label: 'summaryGraph', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/pieChart', label: 'ringChart', name: '扇形图/环形图' }
               ]
             }
           },
@@ -250,9 +267,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "otherChartA" */ '@/views/pages/statisticsChart/otherChartA'),
             meta:{
               title:'其他类型A',
+              label: 'otherTypeA',
               breadcrumb: [
-                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
-                { path: '/statisticsGraph/otherChartA', name: '其他类型A' }
+                { path: '/statisticsGraph', name: '统计图(v-chart)', label: 'summaryGraph', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/otherChartA', label: 'otherTypeA', name: '其他类型A' }
               ]
             }
           },
@@ -262,9 +280,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "otherChartB" */ '@/views/pages/statisticsChart/otherChartB'),
             meta:{
               title:'其他类型B',
+              label: 'otherTypeB',
               breadcrumb: [
-                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
-                { path: '/statisticsGraph/otherChartB', name: '其他类型B' }
+                { path: '/statisticsGraph', name: '统计图(v-chart)', label: 'summaryGraph', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/otherChartB', label: 'otherTypeB', name: '其他类型B' }
               ]
             }
           },
@@ -274,9 +293,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "chartEvent" */ '@/views/pages/statisticsChart/chartEvent'),
             meta:{
               title:'图形事件',
+              label: 'chartEvent',
               breadcrumb: [
-                { path: '/statisticsGraph', name: '统计图(v-chart)', icon: 'el-icon-coin' },
-                { path: '/statisticsGraph/chartEvent', name: '图形事件' }
+                { path: '/statisticsGraph', name: '统计图(v-chart)', label: 'summaryGraph', icon: 'el-icon-coin' },
+                { path: '/statisticsGraph/chartEvent', label: 'chartEvent', name: '图形事件' }
               ]
             }
           }

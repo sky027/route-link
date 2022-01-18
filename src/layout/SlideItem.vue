@@ -11,19 +11,19 @@
         <el-submenu v-if="item.children && item.children.length > 0" :index="rootUrl + item.path">
           <template slot="title">
             <i :class="item.meta.icon"></i>
-            <span slot="title">{{ item.meta.title }}</span>
+            <span slot="title">{{ setMenuTitle(item) }}</span>
           </template>
           <span v-for="child in item.children">
             <el-submenu v-if="child.children && child.children.length > 0" :index="rootUrl + item.path +'/'+ child.path">
-              <span slot="title">{{ child.meta.title }}</span>
-              <el-menu-item v-for="child2 in child.children" :key="child2.path" :index="rootUrl + item.path +'/'+ child.path +'/'+ child2.path">{{ child2.meta.title }}</el-menu-item>
+              <span slot="title">{{ setMenuTitle(child) }}</span>
+              <el-menu-item v-for="child2 in child.children" :key="child2.path" :index="rootUrl + item.path +'/'+ child.path +'/'+ child2.path">{{ setMenuTitle(child2) }}</el-menu-item>
             </el-submenu>
-            <el-menu-item v-if="!child.children && !child.hidden" :index="rootUrl + item.path +'/'+ child.path">{{ child.meta.title }}</el-menu-item>
+            <el-menu-item v-if="!child.children && !child.hidden" :index="rootUrl + item.path +'/'+ child.path">{{ setMenuTitle(child) }}</el-menu-item>
           </span>
         </el-submenu>
         <el-menu-item v-else :index="rootUrl + item.path">
           <i :class="item.meta.icon"></i>
-          <span slot="title">{{ item.meta.title }}</span>
+          <span slot="title">{{ setMenuTitle(item) }}</span>
         </el-menu-item>
       </template>
     </el-menu>
@@ -44,6 +44,17 @@
       return {
         rootUrl: '',
         routerList: []
+      }
+    },
+    computed: {
+      setMenuTitle() {
+        return (item) => {
+          if (item.meta.label) {
+            return this.$t('sysRoute.'+ item.meta.label)
+          } else {
+            return item.meta.title
+          }
+        }
       }
     },
     created() {

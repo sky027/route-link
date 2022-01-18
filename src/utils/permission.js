@@ -1,4 +1,5 @@
 import router from '../router/index'
+import i18n from '@/lang/index'
 
 // 白名单，不需要校验的路由页面
 const whiteList = ['/login', '/error/404', '/error/401']
@@ -23,7 +24,12 @@ router.beforeEach((to, from, next) => {
       }
     }
     // 设置title
-    document.title = to.meta.title
+    to.meta.label
+    if (to.meta.label) {
+      document.title = i18n.t('sysRoute.'+ to.meta.label)
+    } else {
+      document.title = to.meta.title
+    }
   } else {
     // 无token时, 是否属于白名单
     if (whiteList.includes(to.path)) {
@@ -33,7 +39,7 @@ router.beforeEach((to, from, next) => {
       } else if (to.name === '401') {
         document.title = '401! 无权限'
       } else {
-        document.title = '个人测试案例项目'
+        document.title = i18n.t('system.title')
       }
       // window.localStorage.clear()
     } else {
@@ -43,7 +49,7 @@ router.beforeEach((to, from, next) => {
       } else {
         // 跳转登录页
         next('/login')
-        document.title = '个人测试案例项目'
+        document.title = i18n.t('system.title')
       }
     }
   }

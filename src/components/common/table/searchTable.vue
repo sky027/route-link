@@ -214,7 +214,7 @@ export default {
         this.total = this.tableDataAll.length
         setTimeout(() => {
           that.setTitle()
-          this.listLoading = false
+          that.listLoading = false
         }, 700)
         return
       }
@@ -224,8 +224,9 @@ export default {
         this.tableData = list
         setTimeout(() => {
           that.setTitle()
+          that.listLoading = false
         }, 700)
-        this.listLoading = false
+        return;
       }
       this.$request.post(this.tableConfig.requestUrl, param, (result) => {
         if (result && result.returnCode === '1000') {

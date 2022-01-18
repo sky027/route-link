@@ -179,7 +179,10 @@
   }
 }
 .el-popover{
-  padding: 12px 12px 0 12px;
+  padding: 12px;
+}
+.el-popper .popper__arrow::after{
+  border-bottom-color: #f1f0f0;
 }
 .pop-box{
   min-width: 110px;
@@ -192,14 +195,28 @@
 .user-popover{
   min-width: 129px;
   .user-pop-box {
-    padding-bottom: 10px;
+    padding-bottom: -2px;
     .user-item{
       padding: 0 6px;
       color: #999999;
+      overflow: inherit;
       i {
         margin-right: 5px;
       }
     }
   }
 }
-
+.lang-pop{
+  min-width: 129px;
+  border: 1px solid #EBEEF5;
+  background: #FFFFFF;
+  padding: 10px;
+  border-radius: 4px;
+  position: absolute;
+  top: 5PX;
+  left: -123px;
+  .el-select-dropdown__item{
+    padding: 0 6px;
+    color: #999999;
+  }
+}

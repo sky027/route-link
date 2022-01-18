@@ -7,11 +7,19 @@ import router from './router'
 // 路由守卫
 import '@/utils/permission.js'
 import { message } from '@/utils/message'
+// 国际化
+import i18n from '@/lang/index'
 
 // UI组件库
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI);
+
+Vue.use(ElementUI, {
+  size: "default", // element-ui组件的尺寸一共分为large、default、small 、mini
+  i18n: (key, value) => i18n.t(key, value)
+});
+
+// 修改消息提示
 Vue.prototype.$message = message
 // 公共样式
 import './style/index.scss'
@@ -54,6 +62,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  i18n,
   router,
   store,
   components: { App },

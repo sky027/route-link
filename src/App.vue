@@ -15,8 +15,7 @@ export default {
   },
   mounted() {
     window.addEventListener('storage', event => {
-      alert('change');
-      console.log(event);
+      window.location.reload()
     })
   }
 }

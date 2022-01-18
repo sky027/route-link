@@ -12,25 +12,25 @@
           </div>
           <el-form ref="ruleForm" :model="formData" :rules="rules" class="form">
             <el-form-item prop="userName">
-              <el-input class="input-item user" @keyup.enter.native="handleLogin" v-model.trim="formData.userName" clearable placeholder="请输入用户名"></el-input>
+              <el-input class="input-item user" @keyup.enter.native="handleLogin" v-model.trim="formData.userName" clearable :placeholder="$t('system.pleaseEnterName')"></el-input>
             </el-form-item>
             <el-form-item prop="password">
-              <el-input class="input-item pwd" @keyup.enter.native="handleLogin" v-model.trim="formData.password" clearable type="password" auto-complete="new-password" placeholder="请输入用户密码"></el-input>
+              <el-input class="input-item pwd" @keyup.enter.native="handleLogin" v-model.trim="formData.password" clearable type="password" auto-complete="new-password" :placeholder="$t('system.pleaseEnterPwd')"></el-input>
             </el-form-item>
             <el-form-item prop="authCode" class="validCode">
-              <el-input class="input-item yzm" @keyup.enter.native="handleLogin" v-model.trim="formData.authCode" clearable placeholder="请输入验证码"></el-input>
+              <el-input class="input-item yzm" @keyup.enter.native="handleLogin" v-model.trim="formData.authCode" clearable :placeholder=" $t('system.pleaseEnterCode') "></el-input>
               <div class="codeBtn" id="v_container"></div>
             </el-form-item>
           </el-form>
           <div class="remember">
-            <el-checkbox v-model="rememberPwd"><span style="color: #cccccc">记住密码</span></el-checkbox>
-            <span class="forget">忘记密码?</span>
+            <el-checkbox v-model="rememberPwd"><span style="color: #cccccc">{{ $t('system.remPwd') }}</span></el-checkbox>
+            <span class="forget">{{ $t('system.forgotPwd') }}?</span>
           </div>
           <div class="btn">
             <el-button :loading="loading" class="loginBtn"
                type="primary"
                @click="handleLogin">
-              <span class="txt"> 登 录 </span>
+              <span class="txt"> {{ $t('system.login') }} </span>
             </el-button>
           </div>
         </div>
@@ -48,12 +48,12 @@ export default {
   name: 'LoginTemp',
   data(){
     const checkCode = (rule, value, callback) => {
-      if (CommonUtil.trim(value) === '') {
-        callback(new Error('请输入验证码'))
+      if (!CommonUtil.trim(value)) {
+        callback(new Error(this.$t('system.pleaseEnterCode')))
       } else if (this.verifyCode.validate(CommonUtil.trim(value))) {
         callback()
       } else {
-        callback(new Error('验证码错误'))
+        callback(new Error(this.$t('system.codeError')))
         this.verifyCode.refresh()
       }
     }
@@ -65,10 +65,10 @@ export default {
       },
       rules: {
         userName: [
-          { required: true, message: '请输入用户名', trigger: 'blur' }
+          { required: true, message: this.$t('system.pleaseEnterName'), trigger: 'blur' }
         ],
         password: [
-          { required: true, message: '请输入用户密码', trigger: 'blur' }
+          { required: true, message: this.$t('system.pleaseEnterPwd'), trigger: 'blur' }
         ],
         authCode: [
           { required: true, validator: checkCode, trigger: 'blur' }
@@ -111,6 +111,10 @@ export default {
           that.loading = false
           const token = CommonUtil.getUUID(true)
           this.$store.dispatch('system/setToken', token)
+          const lang = CommonUtil.getStorageItem('language')
+          if (lang) {
+            CommonUtil.setStorageItem('language', 'zh')
+          }
           if (that.rememberPwd) {
             Cookies.set('isCheck', '1')
             Cookies.set('loginInfo', window.btoa(JSON.stringify(that.formData)))

@@ -9,7 +9,7 @@
     <div class="right">
       <nav-bar :collapse="isOpened" />
       <breadcrumb />
-      <div class="header">{{ $route.meta.title }}</div>
+      <div class="header">{{ $route.meta.label ? $t('sysRoute.'+ $route.meta.label) : $route.meta.title }}</div>
       <app-main />
     </div>
   </div>

@@ -3,9 +3,9 @@
     <div v-for="(item, index) in routeList" :key="index" class="bread-item">
       <i :class="item.icon" class="tag-icon"></i>
       <i v-if="index > 0" class="split-line" :class="{'color': index === routeList.length-1 && routeList.length > 1}">/</i>
-      <span class="txt" :class="{'color': index === routeList.length-1 && routeList.length > 1}">{{ item.name }}</span>
+      <span class="txt" :class="{'color': index === routeList.length-1 && routeList.length > 1}">{{ setTitle(item) }}</span>
     </div>
-    <div class="times">当前时间：{{ nowTime }}</div>
+    <div class="times">{{ $t('system.nowTime') }}：{{ nowTime }}</div>
   </div>
 </template>
 
@@ -24,12 +24,24 @@ export default {
       timer: null
     }
   },
+  computed: {
+    setTitle() {
+      return (item) => {
+        if (item.label) {
+          return this.$t('sysRoute.'+ item.label)
+        } else {
+          return item.name
+        }
+      }
+    }
+  },
   watch: {
     $route: {
       handler(to, from) {
         const bread = this.$route.meta.breadcrumb || []
         this.routeList = bread.map(v => {
           return {
+            label: v.label,
             path: v.path,
             icon: v.icon ? v.icon : '',
             name: v.name
@@ -43,7 +55,7 @@ export default {
   mounted() {
     const that = this;
     window.setInterval(() => {
-      that.nowTime = CommonUtil.translateTime(new Date().getTime())
+      that.nowTime = CommonUtil.translateTime(new Date().getTime(), '')
     }, 1000)
     // 每30秒 调用检查时间的方法
     this.$nextTick(function () {
@@ -51,14 +63,14 @@ export default {
     })
     // 页面监听 按下鼠标更新操作时间
     window.document.body.onclick = function () {
-      localStorage.setItem('lastTime', new Date().getTime() + '')
+      CommonUtil.setStorageItem('lastTime', new Date().getTime() + '')
     }
   },
   methods: {
     checkTimeout() {
       //更新当前时间
       let currentTime = new Date().getTime()
-      let lastTime = localStorage.getItem('lastTime')
+      let lastTime = CommonUtil.getStorageItem('lastTime')
       if (!lastTime) {
         this.loginOut()
       }
@@ -115,7 +127,7 @@ export default {
     }
   }
   .times{
-    width: 210px;
+    width: 230px;
     height: 47px;
     line-height: 47px;
     color: #999999;
