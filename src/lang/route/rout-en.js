@@ -20,5 +20,6 @@ export default {
     otherTypeA: 'OtherTypeA',
     otherTypeB: 'OtherTypeB',
     chartEvent: 'Chart Event',
+    goCanvas: 'Go Canvas',
   }
 }

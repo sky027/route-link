@@ -182,6 +182,19 @@ export const routeList = [
             }
           },
           {
+            path:'goCanvas',
+            name:'goCanvas',
+            component:() => import(/* webpackChunkName: "goCanvas" */ '@/views/pages/otherTemp/goCavans'),
+            meta:{
+              title:'GOJS图形',
+              label: 'goCanvas',
+              breadcrumb: [
+                { path: '/otherTemp', name: '其他类型组件', label: 'otherTemp', icon: 'el-icon-document' },
+                { path: '/otherTemp/goCanvas', label: 'goCanvas', name: 'GOJS图形' }
+              ]
+            }
+          },
+          {
             path: 'encrypt',
             name:'encrypt',
             component:() => import(/* webpackChunkName: "encrypt" */ '@/views/pages/otherTemp/encrypt'),

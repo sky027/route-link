@@ -20,5 +20,6 @@ export default {
     otherTypeA: '其他类型A',
     otherTypeB: '其他类型B',
     chartEvent: '图形事件',
+    goCanvas: 'GOJS图形',
   }
 }
