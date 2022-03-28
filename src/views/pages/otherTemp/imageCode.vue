@@ -1,28 +1,32 @@
 <template>
   <div class="nodeFile">
-    <el-button @click="flag = true">校 验</el-button>
-    <!-- 拼图验证码 -->
-    <div v-show="flag" class="testCode">
-      <p class="closeBtn"><i class="el-icon-close" @click="flag=!flag"></i></p>
-      <slide-verify
-        :l="42"
-        :r="20"
-        :w="360"
-        :h="160"
-        :imgs="codeUrlList"
-        :accuracy="accuracy"
-        slider-text="向右滑动"
-        @success="onSuccess"
-        @fail="onFail"
-        @refresh="onRefresh"
-        class="slide-box"
-        ref="slideBlock"
-        v-show="flag"
-      ></slide-verify>
+    <div class="ciu">
+      <div class="codeBtn" id="v_container"></div>
+      <el-input class="inp" v-model="codeVal" />
+      <el-button @click="checkVal">校 验</el-button>
     </div>
-    <div class="other" id="slideCode"></div>
-    <div class="other" id="slideCode2"></div>
-    <div class="codeBtn" id="v_container"></div>
+    <div class="img">
+      <div v-show="flag" class="testCode">
+        <p class="closeBtn"><i class="el-icon-close" @click="flag=!flag"></i></p>
+        <slide-verify
+          :l="42"
+          :r="20"
+          :w="360"
+          :h="160"
+          :imgs="codeUrlList"
+          :accuracy="accuracy"
+          slider-text="向右滑动"
+          @success="onSuccess"
+          @fail="onFail"
+          @refresh="onRefresh"
+          class="slide-box"
+          ref="slideBlock"
+          v-show="flag"
+        ></slide-verify>
+      </div>
+      <div class="other" id="slideCode"></div>
+      <div class="other" id="slideCode2"></div>
+    </div>
   </div>
 </template>
 
@@ -36,6 +40,7 @@
     data() {
       return {
         msg: '',
+        codeVal: '',
         flag: true,
         // 精确度小，可允许的误差范围小；为1时，则表示滑块要与凹槽完全重叠，才能验证成功。默认值为5
         accuracy: 1,
@@ -62,6 +67,15 @@
       this.initCode2()
     },
     methods: {
+      checkVal() {
+        const f = this.verifyCode.validate(this.codeVal)
+        if (f) {
+          this.getLogin()
+        } else {
+          this.verifyCode.refresh()
+          this.onFail()
+        }
+      },
       // 拼图成功
       onSuccess (){
         this.getLogin()
@@ -79,18 +93,23 @@
         this.$message.success('验证成功')
       },
       initCode() {
+        const that = this;
+        // const url = 'https://picsum.photos/300/150/?image=' + CommonUtil.getRoundNum(0, 500); // 背景图片地址
+        const url = 'https://picsum.photos/id/' + CommonUtil.getRoundNum(0, 500) + '/310/155'; // 背景图片地址
         let Slide = new SlideVerify({
           elementId: "slideCode", // DOM挂载点
           onSuccess: () => {
-            this.$message.success('验证成功')
+            that.getLogin()
           }, // 成功回调
           onFail: () => {
-            this.$message.error('验证失败')
+            that.initCode();
+            that.onFail()
           }, // 失败回调
           onRefresh: () => {
-            console.log("refresh")
+            console.log("Slide  refresh")
+            that.initCode();
           }, // 刷新回调
-          photo: 'https://picsum.photos/300/150/?image=' + CommonUtil.getRoundNum(0, 500) // 背景图片地址
+          photo: url
         })
       },
       initCode2() {
@@ -100,13 +119,13 @@
           width: 310, // 可选, 默认310
           height: 155, // 可选, 默认155
           onSuccess: function () {
-            that.$message.success('验证成功')
+            that.getLogin()
           },
           onFail: function () {
-            that.$message.error('验证失败')
+            that.onFail()
           },
           onRefresh: function () {
-            console.log("refresh")
+            console.log("jigsaw  refresh")
           }
         })
       }
@@ -117,9 +136,25 @@
 <style scoped lang="scss">
 .nodeFile{
   padding: 20px;
-  .codeBtn{
-    width: 120px;
+  .ciu{
     height: 50px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    .codeBtn{
+      width: 120px;
+      height: 50px;
+    }
+    .inp{
+      width: 200px;
+      height: 40px;
+      font-size: 18px;
+      margin: -10px 20px 0 20px;
+    }
+  }
+  .img{
+    display: flex;
     margin-top: 50px;
   }
   .other{

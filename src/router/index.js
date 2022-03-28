@@ -210,7 +210,7 @@ export const routeList = [
           {
             path: 'imageCode',
             name:'imageCode',
-            component:() => import(/* webpackChunkName: "nodeFile" */ '@/views/pages/otherTemp/nodeFile'),
+            component:() => import(/* webpackChunkName: "nodeFile" */ '@/views/pages/otherTemp/imageCode'),
             meta:{
               title:'拼图验证码',
               label: 'imageCode',
