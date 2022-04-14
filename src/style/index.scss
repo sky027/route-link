@@ -69,3 +69,8 @@ div:focus {
 .clearfix:after {
   clear: both;
 }
+
+#nprogress .bar{
+  height: 3px;
+  background: #409eff;
+}

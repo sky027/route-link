@@ -1,11 +1,23 @@
 import router from '../router/index'
 import i18n from '@/lang/index'
+//顶部页面加载条
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+// 创建进度条
+NProgress.configure({
+  easing: 'ease',
+  speed: 500,
+  showSpinner: false,
+  trickleSpeed: 200,
+  minimum: 0.3
+})
 
 // 白名单，不需要校验的路由页面
 const whiteList = ['/login', '/error/404', '/error/401']
 
-// 路由守卫拦截
+// 路由守卫拦截， 路由跳转前
 router.beforeEach((to, from, next) => {
+  NProgress.start()
   // 读缓存，判断权限
   const token = window.localStorage.getItem('app_token')
   if (token) {
@@ -13,18 +25,22 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/login') {
       next({ path: '/' })
     } else {
-      // 存在token，但是页面在其他页，需要判断权限，（假定有权限）
-      const hasRoles = true
-      if (hasRoles) {
-        // 有token有权限，直接下一步
-        next()
+      // 判断页面是否存在
+      if (to.name) {
+        // 存在token，但是页面在其他页，需要判断权限，（假定有权限）
+        const hasRoles = true
+        if (hasRoles) {
+          // 有token有权限，直接下一步
+          next()
+        } else {
+          // 有token无权限时，跳转无权限页面
+          next('/error/401')
+        }
       } else {
-        // 有token无权限时，跳转无权限页面
-        next('/error/401')
+        next('/error/404')
       }
     }
     // 设置title
-    to.meta.label
     if (to.meta.label) {
       document.title = i18n.t('sysRoute.'+ to.meta.label)
     } else {
@@ -54,7 +70,8 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
-
+// 路由跳转结束
 router.afterEach((to, from, next) => {
   // do something
+  NProgress.done()
 })
