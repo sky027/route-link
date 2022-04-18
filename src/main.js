@@ -48,11 +48,9 @@ Vue.prototype.$swiper = Swiper;
 import SlideVerify from '../node_modules/vue-monoplasty-slide-verify'
 Vue.use(SlideVerify)
 
-/**
-// 文件
-import filesFn from "./utils/makeFile";
-Vue.prototype.$files = filesFn
-*/
+// 请求路径
+import requestUrl from "./api/requestUrl"
+Vue.prototype.$url = requestUrl
 
 // jQuery
 import $ from 'jquery'

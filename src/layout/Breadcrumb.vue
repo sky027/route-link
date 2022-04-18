@@ -56,10 +56,10 @@ export default {
     const that = this;
     window.setInterval(() => {
       that.nowTime = CommonUtil.translateTime(new Date().getTime(), '')
-    }, 1000)
+    }, 30000)
     // 每30秒 调用检查时间的方法
     this.$nextTick(function () {
-      this.timer = window.setInterval(this.checkTimeout, this.timeOut)
+      this.timer = window.setInterval(this.checkTimeout, 30000)
     })
     // 页面监听 按下鼠标更新操作时间
     window.document.body.onclick = function () {

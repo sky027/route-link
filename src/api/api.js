@@ -1,7 +1,6 @@
 // import './mock/index'
 import axios from 'axios'
 import { Loading } from 'element-ui'
-// const prodEnv = require('./prod.env')
 import { message } from '@/utils/message'
 import router from '../router/index'
 

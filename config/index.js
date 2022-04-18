@@ -10,13 +10,31 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      "/api": {
+        target: "https://testsd.cicd.vpclub.cn",
+        changeOrigin: true,  //是否跨域
+        pathRewrite: {
+          "^/api": ""
+        },
+        cookieDomainRewrite: {
+          'testsd.cicd.vpclub.cn': 'localhost'
+        },
+        headers: {
+          // 添加配置项 headers
+          'Origin': 'http://localhost:8080',
+          'Referer': 'http://localhost:8080',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'content-type'
+        }
+      }
+    },
 
     // Various Dev Server settings
-    // host: 'localhost', // can be overwritten by process.env.HOST
-    host: '0.0.0.0',
+    host: 'localhost', // can be overwritten by process.env.HOST
+    // host: '0.0.0.0',
     // port: Math.floor(Math.random() * 2000) + 7000, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    port: 8536,
+    port: 5000,
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

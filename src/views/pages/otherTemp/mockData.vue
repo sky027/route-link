@@ -4,6 +4,7 @@
       <h5>展示 mock.js 生成数据</h5>
       <el-button @click="getMockData(1)">获取数据</el-button>
       <el-button @click="getMockData(2)">获取用户数据</el-button>
+      <el-button @click="getTestData">AAAA</el-button>
       <el-button @click="writeFile">加密</el-button>
     </div>
     <div class="result">
@@ -14,6 +15,7 @@
 
 <script>
   import {encryptAndDecode} from "../../../utils/encryp";
+  import Ajax from "../../../utils/ajax";
 
   export default {
     name: "mockData",
@@ -41,6 +43,14 @@
             })
           break
         }
+      },
+      getTestData() {
+        const url = 'api/cm/aibizhall/pc/admin/call/activity/template'
+        Ajax.ajax({url, method: 'post', data: {}, headers: {responseType: 'blob'}}).then(res => {
+          debugger
+        }).catch(err => {
+          debugger
+        })
       },
       writeFile() {
         const str = encryptAndDecode.encrypt('测试')
