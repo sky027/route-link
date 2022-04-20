@@ -321,9 +321,10 @@ export const routeList = [
         component: { render (c) { return c('router-view') }},
         meta:{
           title:'特效实例',
+          label: 'specialInstance',
           icon: 'el-icon-notebook-2',
           breadcrumb: [
-            { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' }
+            { path: '/examples', name: '特效实例', label: 'specialInstance', icon: 'el-icon-notebook-2' }
           ]
         },
         children: [
@@ -333,9 +334,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "weather" */ '@/views/pages/examples/weather'),
             meta: {
               title: '天气展示',
+              label: 'weather',
               breadcrumb: [
-                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
-                { path: '/examples/weather', name: '天气展示'}
+                { path: '/examples', name: '特效实例', label: 'specialInstance', icon: 'el-icon-notebook-2' },
+                { path: '/examples/weather', label: 'weather', name: '天气展示'}
               ]
             }
           },
@@ -345,9 +347,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "buttons" */ '@/views/pages/examples/buttons/index'),
             meta: {
               title: '30种按钮特效',
+              label: 'btnEffects',
               breadcrumb: [
-                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
-                { path: '/examples/buttons', name: '30种按钮特效'}
+                { path: '/examples', name: '特效实例', label: 'specialInstance', icon: 'el-icon-notebook-2' },
+                { path: '/examples/buttons', label: 'btnEffects', name: '30种按钮特效'}
               ]
             }
           },
@@ -357,9 +360,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "cssClock" */ '@/views/pages/examples/cssClock'),
             meta: {
               title: 'CSS时钟',
+              label: 'CSSClock',
               breadcrumb: [
-                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
-                { path: '/examples/cssClock', name: 'CSS时钟'}
+                { path: '/examples', name: '特效实例', label: 'specialInstance', icon: 'el-icon-notebook-2' },
+                { path: '/examples/cssClock', label: 'CSSClock', name: 'CSS时钟'}
               ]
             }
           },
@@ -369,9 +373,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "LedClock" */ '@/views/pages/examples/LedClock/index'),
             meta: {
               title: 'LED时钟',
+              label: 'LEDClock',
               breadcrumb: [
-                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
-                { path: '/examples/ledClock', name: 'LED时钟'}
+                { path: '/examples', name: '特效实例', label: 'specialInstance', icon: 'el-icon-notebook-2' },
+                { path: '/examples/ledClock', label: 'LEDClock', name: 'LED时钟'}
               ]
             }
           },
@@ -381,9 +386,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "3DBackground" */ '@/views/pages/examples/background/index'),
             meta: {
               title: '3D动态背景',
+              label: 'back3D',
               breadcrumb: [
-                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
-                { path: '/examples/3DBackground', name: '3D动态背景'}
+                { path: '/examples', name: '特效实例', label: 'specialInstance', icon: 'el-icon-notebook-2' },
+                { path: '/examples/3DBackground', label: 'back3D', name: '3D动态背景'}
               ]
             }
           },
@@ -393,9 +399,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "ringTime" */ '@/views/pages/examples/ringTime/index'),
             meta: {
               title: '环形中文时间',
+              label:  'ringTime',
               breadcrumb: [
-                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
-                { path: '/examples/ringTime', name: '环形中文时间'}
+                { path: '/examples', name: '特效实例', label: 'specialInstance', icon: 'el-icon-notebook-2' },
+                { path: '/examples/ringTime', label:  'ringTime', name: '环形中文时间'}
               ]
             }
           },
@@ -405,9 +412,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "particleBall" */ '@/views/pages/examples/particleBall'),
             meta: {
               title: '粒子球',
+              label: 'particleBall',
               breadcrumb: [
-                { path: '/examples', name: '特效实例', icon: 'el-icon-notebook-2' },
-                { path: '/examples/particleBall', name: '粒子球'}
+                { path: '/examples', name: '特效实例', label: 'specialInstance', icon: 'el-icon-notebook-2' },
+                { path: '/examples/particleBall', label: 'particleBall', name: '粒子球'}
               ]
             }
           },
@@ -419,9 +427,10 @@ export const routeList = [
         component: { render (c) { return c('router-view') }},
         meta:{
           title:'电脑管理',
+          label: 'computer',
           icon: 'el-icon-cpu',
           breadcrumb: [
-            { path: '/computer', name: '电脑管理', icon: 'el-icon-cpu' }
+            { path: '/computer', label: 'computer', name: '电脑管理', icon: 'el-icon-cpu' }
           ]
         },
         children:[
@@ -431,9 +440,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "computerList" */ '@/views/pages/computer/index'),
             meta:{
               title:'电脑信息列表',
+              label: 'computerList',
               breadcrumb: [
-                { path: '/computer', name: '电脑管理', icon: 'el-icon-cpu' },
-                { path: '/computer/computerList', name: '电脑信息列表'},
+                { path: '/computer', label: 'computer', name: '电脑管理', icon: 'el-icon-cpu' },
+                { path: '/computer/computerList', label: 'computerList', name: '电脑信息列表'},
               ]
             }
           },
@@ -444,10 +454,11 @@ export const routeList = [
             hidden: true,
             meta: {
               title: '新增电脑信息',
+              label: 'addCompInfo',
               breadcrumb: [
-                { path: '/computer', name: '电脑管理', icon: 'el-icon-cpu' },
-                { path: '/computer/computerList', name: '电脑信息列表'},
-                { path: '/computer/addInfo', name: '新增电脑信息'}
+                { path: '/computer', label: 'computer', name: '电脑管理', icon: 'el-icon-cpu' },
+                { path: '/computer/computerList', label: 'computerList', name: '电脑信息列表'},
+                { path: '/computer/addInfo', label: 'addCompInfo', name: '新增电脑信息'}
               ]
             }
           }
@@ -461,9 +472,10 @@ export const routeList = [
         },
         meta:{
           title:'手机管理',
+          label: 'phone',
           icon: 'el-icon-mobile-phone',
           breadcrumb: [
-            { path: '/phone', name: '手机管理', icon: 'el-icon-mobile-phone' }
+            { path: '/phone', name: '手机管理',label: 'phone', icon: 'el-icon-mobile-phone' }
           ]
         },
         children:[
@@ -473,9 +485,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "phoneList" */ '@/views/pages/phone/index'),
             meta: {
               title: '手机列表',
+              label: 'phoneList',
               breadcrumb: [
-                { path: '/phone', name: '手机管理', icon: 'el-icon-mobile-phone' },
-                { path: '/phone/phoneList', name: '手机列表'}
+                { path: '/phone', name: '手机管理', label: 'phone', icon: 'el-icon-mobile-phone' },
+                { path: '/phone/phoneList', label: 'phoneList', name: '手机列表'}
               ]
             }
           },
@@ -486,10 +499,11 @@ export const routeList = [
             hidden: true,
             meta: {
               title: '新增手机信息',
+              label: 'addPhone',
               breadcrumb: [
-                { path: '/phone', name: '手机管理', icon: 'el-icon-mobile-phone' },
-                { path: '/phone/phoneList', name: '手机列表'},
-                { path: '/phone/addPhone', name: '新增手机信息'}
+                { path: '/phone', name: '手机管理', label: 'phone', icon: 'el-icon-mobile-phone' },
+                { path: '/phone/phoneList', label: 'phoneList', name: '手机列表'},
+                { path: '/phone/addPhone', label: 'addPhone', name: '新增手机信息'}
               ]
             }
           },
@@ -499,9 +513,10 @@ export const routeList = [
             component: { render (c) { return c('router-view') } },
             meta:{
               title:'其他手机列表',
+              label: 'otherPhone',
               breadcrumb: [
-                { path: '/phone', name: '手机管理', icon: 'el-icon-mobile-phone' },
-                { path: '/phone/otherPhone', name: '其他手机列表'}
+                { path: '/phone', name: '手机管理', label: 'phone', icon: 'el-icon-mobile-phone' },
+                { path: '/phone/otherPhone', label: 'otherPhone', name: '其他手机列表'}
               ]
             },
             children: [
@@ -511,10 +526,11 @@ export const routeList = [
                 component: () => import(/* webpackChunkName: "otherList" */ '@/views/pages/phone/other'),
                 meta: {
                   title: '其他类型',
+                  label: 'otherType',
                   breadcrumb: [
-                    { path: '/phone', name: '手机管理', icon: 'el-icon-mobile-phone' },
-                    { path: '/phone/otherPhone', name: '其他手机列表'},
-                    { path: '/phone/otherList', name: '其他类型'}
+                    { path: '/phone', name: '手机管理', label: 'phone', icon: 'el-icon-mobile-phone' },
+                    { path: '/phone/otherPhone', label: 'otherPhone', name: '其他手机列表'},
+                    { path: '/phone/otherList', label: 'otherType', name: '其他类型'}
                   ]
                 }
               }
@@ -526,9 +542,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "phoneType" */ '@/views/pages/phone/phoneType'),
             meta: {
               title: '手机类型',
+              label: 'phoneType',
               breadcrumb: [
-                { path: '/phone', name: '手机管理', icon: 'el-icon-mobile-phone' },
-                { path: '/phone/phoneList', name: '手机类型'}
+                { path: '/phone', name: '手机管理', label: 'phone', icon: 'el-icon-mobile-phone' },
+                { path: '/phone/phoneList', label: 'phoneType', name: '手机类型'}
               ]
             }
           }
@@ -540,9 +557,10 @@ export const routeList = [
         component: { render (c) { return c('router-view') }},
         meta:{
           title:'系统管理',
+          label: 'system',
           icon: 'el-icon-cpu',
           breadcrumb: [
-            { path: '/system', name: '系统管理', icon: 'el-icon-cpu' }
+            { path: '/system', label: 'system', name: '系统管理', icon: 'el-icon-cpu' }
           ]
         },
         children: [
@@ -552,9 +570,10 @@ export const routeList = [
             component:() => import(/* webpackChunkName: "systemPage" */ '@/views/system/index'),
             meta: {
               title: '系统页面',
+              label: 'sysPage',
               breadcrumb: [
-                { path: '/system', name: '系统管理', icon: 'el-icon-mobile-phone' },
-                { path: '/system/systemPage', name: '系统页面'}
+                { path: '/system', name: '系统管理', label: 'system', icon: 'el-icon-mobile-phone' },
+                { path: '/system/systemPage', label: 'sysPage', name: '系统页面'}
               ]
             }
           },

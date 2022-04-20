@@ -34,7 +34,7 @@ module.exports = {
     host: 'localhost', // can be overwritten by process.env.HOST
     // host: '0.0.0.0',
     // port: Math.floor(Math.random() * 2000) + 7000, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    port: 5000,
+    port: 8096,
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

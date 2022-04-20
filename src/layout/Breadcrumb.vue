@@ -56,7 +56,7 @@ export default {
     const that = this;
     window.setInterval(() => {
       that.nowTime = CommonUtil.translateTime(new Date().getTime(), '')
-    }, 30000)
+    }, 1000)
     // 每30秒 调用检查时间的方法
     this.$nextTick(function () {
       this.timer = window.setInterval(this.checkTimeout, 30000)
